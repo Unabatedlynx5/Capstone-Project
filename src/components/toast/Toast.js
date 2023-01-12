@@ -18,7 +18,7 @@ import FormLabel from 'react-bootstrap/esm/FormLabel';
 import ToastHeader from 'react-bootstrap/esm/ToastHeader';
 
 export default function Toasts() {
-  const toasts = useSelector((state)=> state.toasts);
+  const toasts = useSelector((state) => (state.toasts));
   const dispatch = useDispatch();
   //increment value
   const [toast, setToast] = useState({})
@@ -30,7 +30,7 @@ export default function Toasts() {
   
 return (
     <ToastContainer position='top-end'>
-        {toasts.map((toasts, index) => (
+        {initialState.toasts.map((toasts, index) => (
             <Toast bg='secondary' key={index} show={toasts.completed} 
             onClose={(key) => {dispatch(invert(key))}}>
                 <ToastHeader>

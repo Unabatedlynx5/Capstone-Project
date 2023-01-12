@@ -1,5 +1,5 @@
-import { createSlice, createReducer, createAction } from "@reduxjs/toolkit";
-import counterSlice from "../features/counter/counterSlice";
+import { createSlice, createReducer, createAction, current } from "@reduxjs/toolkit";
+import counterSlice from "../../features/counter/counterSlice";
 
 export const initialState = {
     toasts: [
@@ -7,19 +7,19 @@ export const initialState = {
          data: "test",
          id: 1,
          title: "Eat",
-         completed: false
+         completed: true
         },
         {
          data: "test",
          id: 2,
          title: "Code",
-         completed: false
+         completed: true
         },
         {
          data: "test",
          id: 3,
          title: "Sleep",
-         completed: false
+         completed: true
         }
        ]
 };
@@ -30,21 +30,25 @@ export const toastSlice = createSlice({
     reducers: {
         //needs complete toast to append to state
         add: (state, action) => {
+            console.log(current(state))
             const toast = action.payload
             state.toasts.push(toast);
         },
         //needs toast Id saved as 'payload'
         subtract: (state, action) => {
+            console.log(current(state))
             state.toasts = state.toasts.filter(item => item.id !== action.id);
         },
         //needs toast Id saved as 'payload'
         //changes completed status to inverse.
         invert: (state, action) => {
+            console.log(current(state))
             const toast = state.toasts[action.payload]
             toast.completed = !toast.completed;
         },
         //needs title data and toast Id, saved as 'payload'.
         editBody: (state, action) => {
+            console.log(current(state))
             const index = state.toasts.map((item) => item.id).indexOf(action.payload.Id)
             state.toasts[index].data = action.payload.data;
         },
