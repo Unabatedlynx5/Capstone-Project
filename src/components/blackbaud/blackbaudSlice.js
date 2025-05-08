@@ -11,7 +11,7 @@ const handleCredentialResponse = (response) => {
 export const fetchBlackbaudAuth = createAsyncThunk(
     'blackbaud/fetchBlackbaudAuth',
     async () => {
-            const response = await fetch(`https://app.blackbaud.com/oauth/authorize?client_id=594df44d-2338-4cf2-bdf1-ed3df22d8d22&response_type=token&redirect_uri=http://localhost:3000/`, {
+            const response = await fetch(`https://app.blackbaud.com/oauth/authorize?client_id=${store.credential}&response_type=token&redirect_uri=http://localhost:3000/`, {
                 mode: 'no-cors',
                 headers: {
                     "Access-Control-Allow-Origin": 'http://localhost:3000/',
